@@ -31,7 +31,7 @@ body {
           align-items: center;
 }
 
-.container .menu-bar a {
+.container .menu-bar button {
   padding: 15px;
   background: #fff;
   color: #000;
@@ -42,11 +42,11 @@ body {
   border-right: 2px solid #000;
 }
 
-.container .menu-bar a:last-child {
+.container .menu-bar button:last-child {
   border-right: none;
 }
 
-.container .menu-bar a:hover {
+.container .menu-bar button:hover {
   background: #000;
   color: #fff;
   -webkit-box-shadow: 0 0 10px #1515f8;
