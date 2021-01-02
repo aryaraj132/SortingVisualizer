@@ -20,19 +20,20 @@ body {
   background: #000;
   height: 50px;
   color: #fff;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  padding: 1px 0;
+  text-align: center;
+}
+
+.container .menu-bar .children {
+  z-index: 30;
+  max-width: 100px;
+  min-height: 100px;
 }
 
 .container .menu-bar button {
-  padding: 15px;
+  outline: none;
+  padding: 0 5px;
+  height: 48px;
   background: #fff;
   color: #000;
   text-decoration: none;
@@ -40,6 +41,16 @@ body {
   font-size: small;
   font-weight: 600;
   border-right: 2px solid #000;
+}
+
+.container .menu-bar button .arrow {
+  border: solid #000;
+  margin-left: 10px;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
 }
 
 .container .menu-bar button:last-child {
@@ -51,6 +62,10 @@ body {
   color: #fff;
   -webkit-box-shadow: 0 0 10px #1515f8;
           box-shadow: 0 0 10px #1515f8;
+}
+
+.container .menu-bar button:hover .arrow {
+  border-color: #fff;
 }
 
 .container .bars-container {

@@ -18,11 +18,17 @@ body{
         background: $color1;
         height: 50px;
         color: $color2;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        padding: 1px 0;
+        text-align: center;
+        .children{
+            z-index: 30;
+            max-width: 100px;
+            min-height: 100px;
+        }
         button{
-            padding: 15px;
+            outline: none;
+            padding: 0 5px;
+            height: 48px;
             background: $color2;
             color: $color1;
             text-decoration: none;
@@ -30,6 +36,14 @@ body{
             font-size: small;
             font-weight: 600;
             border-right: 2px solid $color1;
+            .arrow {
+                border: solid $color1;
+                margin-left: 10px;
+                border-width: 0 3px 3px 0;
+                display: inline-block;
+                padding: 3px;
+                transform: rotate(45deg);
+              }
             &:last-child{
                 border-right: none;
             }
@@ -37,9 +51,13 @@ body{
                 background: $color1;
                 color: $color2;
                 box-shadow: 0 0 10px rgb(21, 21, 248);
+                .arrow{
+                    border-color: $color2;
+                }
             }
         }
     }
+    
     .bars-container{
         position: absolute;
         left: 50px;
