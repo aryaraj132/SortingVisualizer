@@ -1,4 +1,4 @@
-Bar_size = 40;
+Bar_size = 50;
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max-min +1) + min);
 }
@@ -42,9 +42,15 @@ document.getElementById('bubbleSort').addEventListener('click', ()=>{
     bubbleSort(Arr);
 });
 window.onload = function(){
+    if (window.innerWidth < 523) {
+        Bar_size = 20;
+    }
+    if (window.innerWidth < 220) {
+        Bar_size = 15;
+    }
     ul = document.querySelector('.bars-container');
     for (let i = 0; i < Bar_size; i++) {
         ul.insertAdjacentHTML( 'afterbegin', '<li class="bars"></li>');
     }
-    GenArray()
+    GenArray();
 };

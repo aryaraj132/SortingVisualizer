@@ -40,7 +40,6 @@ body {
   font-size: small;
   font-weight: 600;
   border-right: 2px solid #000;
-  margin-right: 5px;
 }
 
 .container .menu-bar a:last-child {
@@ -56,7 +55,6 @@ body {
 
 .container .bars-container {
   position: absolute;
-  right: 50px;
   left: 50px;
   bottom: 0px;
   width: calc(100vw - 100px);
@@ -72,6 +70,13 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+}
+
+@media screen and (max-width: 623px) {
+  .container .bars-container {
+    left: 0px;
+    width: 100vw;
+  }
 }
 
 .container .bars-container .bars {
