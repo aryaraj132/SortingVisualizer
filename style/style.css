@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+body {
+  background: #fff;
+}
+
+.container {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.container .menu-bar {
+  width: 100%;
+  background: #000;
+  height: 50px;
+  color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.container .menu-bar a {
+  padding: 15px;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: small;
+  font-weight: 600;
+  border-right: 2px solid #000;
+  margin-right: 5px;
+}
+
+.container .menu-bar a:last-child {
+  border-right: none;
+}
+
+.container .menu-bar a:hover {
+  background: #000;
+  color: #fff;
+  -webkit-box-shadow: 0 0 10px #1515f8;
+          box-shadow: 0 0 10px #1515f8;
+}
+
+.container .bars-container {
+  position: absolute;
+  right: 50px;
+  left: 50px;
+  bottom: 0px;
+  width: calc(100vw - 100px);
+  height: calc(100vh - 60px);
+  background: #000;
+  padding: 0 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.container .bars-container .bars {
+  display: inline-block;
+  list-style-type: none;
+  width: 10px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  z-index: 2;
+  margin-right: 10px;
+}
+/*# sourceMappingURL=style.css.map */
