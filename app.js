@@ -1,4 +1,14 @@
-Bar_size = 50;
+Bar_size = Math.floor((window.innerWidth - 120)/15);;
+timeout = 100
+document.getElementById('fast').addEventListener('click',()=>{
+    timeout=30
+});
+document.getElementById('default-speed').addEventListener('click',()=>{
+    timeout=100
+});
+document.getElementById('slow').addEventListener('click',()=>{
+    timeout=500
+});
 function randomInt(min, max) {
     return Math.floor(Math.random() * (max-min +1) + min);
 }
@@ -24,13 +34,13 @@ async function bubbleSort(inputArr){
                 let tmp = inputArr[j];
                 inputArr[j] = inputArr[j + 1];
                 inputArr[j + 1] = tmp;
-                await timer(100);
+                await timer(timeout);
                 bars[j].style.background = "red";
                 bars[j+1].style.background = "red";
                 bars[j].style.height = Arr[j] + "%";
                 bars[j+1].style.height = Arr[j+1] + "%";
             }
-            await timer(100);
+            await timer(timeout);
                 bars[j].style.background = "aqua";
                 bars[j+1].style.background = "aqua";
         }
@@ -42,11 +52,9 @@ document.getElementById('bubbleSort').addEventListener('click', ()=>{
     bubbleSort(Arr);
 });
 window.onload = function(){
-    if (window.innerWidth < 523) {
-        Bar_size = 20;
-    }
-    if (window.innerWidth < 220) {
-        Bar_size = 15;
+    
+if (window.innerWidth < 170) {
+        Bar_size = 4;
     }
     ul = document.querySelector('.bars-container');
     for (let i = 0; i < Bar_size; i++) {

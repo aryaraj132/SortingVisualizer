@@ -10,6 +10,27 @@ body {
   background: #fff;
 }
 
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+::-webkit-scrollbar-corner {
+  width: 2px;
+}
+
+::-webkit-scrollbar-track {
+  background: none;
+  outline: none;
+  border: none;
+}
+
+::-webkit-scrollbar-thumb {
+  background: red;
+  border-radius: 10px;
+  width: 2px;
+}
+
 .container {
   width: 100vw;
   min-height: 100vh;
@@ -51,9 +72,14 @@ body {
   transition: opacity .4s ease;
 }
 
+.container .menu-bar .children button {
+  width: 100%;
+}
+
 .container .menu-bar .children li {
   border-bottom: 1px solid #000;
   margin: 2px 0;
+  width: 100%;
 }
 
 .container .menu-bar .children li:last-child {
@@ -116,6 +142,7 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow-X: scroll;
 }
 
 @media screen and (max-width: 623px) {
@@ -129,6 +156,7 @@ body {
   display: inline-block;
   list-style-type: none;
   width: 10px;
+  min-width: 1px;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   z-index: 2;
