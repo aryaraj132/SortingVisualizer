@@ -152,8 +152,13 @@ async function selectionSort(inputArr) {
              bars[min].style.height = inputArr[min] + "%";
              await timer(timeout*(2/3))
              bars[min].style.background = "aqua"; 
-             bars[i].style.background = "violet";
+             bars[i].style.background = "aqua";
         }
+    }
+    for (let i = 0; i < bars.length; i++) {
+        const element = bars[i];
+        await timer(50)
+        element.style.background = 'violet';
     }
     return inputArr;
 }
