@@ -73,6 +73,41 @@ async function insertionSort(inputArr) {
             bars[j+1].style.height = inputArr[j+1] + "%";
             bars[i].style.background = "aqua";
         }
+        for(let i=n-1;i>=0;i--){
+            await timer(50)
+            bars[i].style.background = "violet";
+        }
+    return inputArr;
+}
+async function selectionSort(inputArr) { 
+    let n = inputArr.length;
+    bars = document.querySelectorAll('.bars');
+    for(let i = 0; i < n; i++) {
+        let min = i;
+        bars[i].style.background = "green";
+        for(let j = i+1; j < n; j++){
+            bars[j].style.background = "green";
+            if(inputArr[j] < inputArr[min]) {
+                bars[j].style.background = "red";
+                min=j;
+            }
+            await timer(timeout*(2/3))
+            bars[j].style.background = "aqua";
+        }
+         if (min != i) {
+            await timer(timeout*(2/3))
+            bars[min].style.background = "red"; 
+            bars[i].style.background = "red";
+             let tmp = inputArr[i]; 
+             inputArr[i] = inputArr[min];
+             bars[i].style.height = inputArr[i] + "%";
+             inputArr[min] = tmp;
+             bars[min].style.height = inputArr[min] + "%";
+             await timer(timeout*(2/3))
+             bars[min].style.background = "aqua"; 
+             bars[i].style.background = "violet";
+        }
+    }
     return inputArr;
 }
 async function bubbleSort(inputArr){
@@ -105,6 +140,9 @@ document.getElementById('bubbleSort').addEventListener('click', ()=>{
 });
 document.getElementById('insertionSort').addEventListener('click', ()=>{
     insertionSort(Arr);
+});
+document.getElementById('selectionSort').addEventListener('click', ()=>{
+    selectionSort(Arr);
 });
 window.onload = function(){
     
