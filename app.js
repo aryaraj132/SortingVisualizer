@@ -23,36 +23,42 @@ function GenArray() {
         element.style.background = "aqua"; 
     }
 }
-function mSort (array) {
-    if (array.length === 1) {
-    return array                            // return once we hit an array with a single item
+function draw(array){
+    bars = document.querySelectorAll('.bars');
+    for (let i = 0; i < array.length; i++) {
+        const element = array[i];
+        bars[i].style.height = element + "%";
     }
- const middle = Math.floor(array.length / 2) // get the middle item of the array rounded down
- const left = array.slice(0, middle)         // items on the left side
- const right = array.slice(middle) 
- return merge(
-    mSort(left),
-    mSort(right)
- )}
- // compare the arrays item by item and return the concatenated result
- function merge (left, right) {
-    //let result = []
-    let leftIndex = 0
-    let rightIndex = 0
-    let barIndex = 0
-    //bars = document.querySelectorAll('.bars');
-    while (leftIndex < left.length && rightIndex < right.length) {
-       if (left[leftIndex] < right[rightIndex]) {
-       result.push(left[leftIndex])
-       leftIndex++    
-       } else {
-       result.push(right[rightIndex])
-       rightIndex++      
+}
+async function mergeSort(array, leftIndex, rightIndex) {
+    length = rightIndex - leftIndex
+    if (length < 2) {
+        return array;
     }
- }
- 
- return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
- }
+    var mid = leftIndex + Math.floor(length / 2);
+
+    mergeSort(array, leftIndex, mid)
+    mergeSort(array, mid, rightIndex)      
+    await timer(timeout);
+    draw(array);
+    merge(array, leftIndex, mid, rightIndex)
+}
+function merge(array, leftIndex, mid, rightIndex) {
+    var result = [];
+    var l = leftIndex,
+        r = mid;
+    while (l < mid && r < rightIndex) {
+        if (array[l] < array[r]) {
+            result.push(array[l++]);
+        } else {
+            result.push(array[r++]);
+        }
+    }
+    result = result.concat(array.slice(l, mid)).concat(array.slice(r, rightIndex));
+    for (let i = 0; i < rightIndex - leftIndex; i++) {
+        array[leftIndex + i] = result[i]
+    }
+}
 async function partition(items, left, right,bars) {
     let mid = Math.floor((right + left) / 2);
     var pivot   = items[mid],
@@ -198,6 +204,11 @@ document.getElementById('selectionSort').addEventListener('click', ()=>{
 });
 document.getElementById('quickSort').addEventListener('click', ()=>{
     quickSort(Arr,0,Arr.length-1);
+});
+document.getElementById('mergeSort').addEventListener('click', async()=>{
+    await mergeSort(Arr,0,Arr.length);
+    await timer(timeout);
+    draw(Arr);
 });
 window.onload = function(){
     
