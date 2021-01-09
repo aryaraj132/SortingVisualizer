@@ -38,25 +38,43 @@ async function mergeSort(array, leftIndex, rightIndex) {
     var mid = leftIndex + Math.floor(length / 2);
 
     mergeSort(array, leftIndex, mid)
-    mergeSort(array, mid, rightIndex)      
-    await timer(timeout);
-    draw(array);
-    merge(array, leftIndex, mid, rightIndex)
+    mergeSort(array, mid, rightIndex)
+    //await timer(1000)
+    //draw(array);
+    await merge(array, leftIndex, mid, rightIndex)
 }
-function merge(array, leftIndex, mid, rightIndex) {
+async function merge(array, leftIndex, mid, rightIndex) {
+    bars = document.querySelectorAll('.bars');
     var result = [];
     var l = leftIndex,
-        r = mid;
+        r = mid,
+        barIndex = 0;
     while (l < mid && r < rightIndex) {
         if (array[l] < array[r]) {
             result.push(array[l++]);
+            //await timer(timeout);
+            bars[barIndex].style.height = result[barIndex] + "%";
+            barIndex++;
         } else {
             result.push(array[r++]);
+            //await timer(timeout);
+            bars[barIndex].style.height = result[barIndex] + "%";
+            barIndex++;
         }
     }
-    result = result.concat(array.slice(l, mid)).concat(array.slice(r, rightIndex));
+    while (l<mid) {
+        result.push(array[l++]);
+        bars[barIndex].style.height = result[barIndex] + "%";
+        barIndex++;
+    }
+    while (r<rightIndex) {
+        result.push(array[r++]);
+        bars[barIndex].style.height = result[barIndex] + "%";
+        barIndex++;
+    }
     for (let i = 0; i < rightIndex - leftIndex; i++) {
         array[leftIndex + i] = result[i]
+        //bars[leftIndex + i].style.height = result[i] + "%";
     }
 }
 async function partition(items, left, right,bars) {
@@ -207,8 +225,9 @@ document.getElementById('quickSort').addEventListener('click', ()=>{
 });
 document.getElementById('mergeSort').addEventListener('click', async()=>{
     await mergeSort(Arr,0,Arr.length);
-    await timer(timeout);
-    draw(Arr);
+    //await timer(timeout);
+    //draw(Arr);
+    console.log(Arr)
 });
 window.onload = function(){
     
