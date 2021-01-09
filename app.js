@@ -53,6 +53,53 @@ function mSort (array) {
  
  return result.concat(left.slice(leftIndex)).concat(right.slice(rightIndex))
  }
+async function partition(items, left, right,bars) {
+    let mid = Math.floor((right + left) / 2);
+    var pivot   = items[mid],
+        i       = left, 
+        j       = right;
+    bars[mid].style.background = "green";
+    while (i <= j) {
+        while (items[i] < pivot) {
+            i++;
+        }
+        while (items[j] > pivot) {
+            j--;
+        }
+        if (i <= j) {
+            await timer(timeout*(2/3));
+            bars[j].style.background = "red";
+            bars[i].style.background = "red";
+            let temp = items[i]
+            items[i] = items[j]
+            items[j] = temp
+            await timer(timeout*(2/3));
+            bars[i].style.height = items[i] + "%";
+            bars[j].style.height = items[j] + "%";
+            await timer(timeout*(2/3));
+            bars[j].style.background = "aqua";
+            bars[i].style.background = "aqua";
+            i++;
+            j--;
+        }
+    }
+    bars[mid].style.background = "aqua";
+    return i;
+}
+async function quickSort(items, left, right) {
+    bars = document.querySelectorAll('.bars');
+    var index;
+    if (items.length > 1) {
+        index = await partition(items, left, right,bars); //index returned from partition
+        if (left < index - 1) { //more elements on the left side of the pivot
+            quickSort(items, left, index - 1);
+        }
+        if (index < right) { //more elements on the right side of the pivot
+            quickSort(items, index, right);
+        }
+    }
+    return items;
+}
 async function insertionSort(inputArr) {
     bars = document.querySelectorAll('.bars');
     let n = inputArr.length;
@@ -143,6 +190,9 @@ document.getElementById('insertionSort').addEventListener('click', ()=>{
 });
 document.getElementById('selectionSort').addEventListener('click', ()=>{
     selectionSort(Arr);
+});
+document.getElementById('quickSort').addEventListener('click', ()=>{
+    quickSort(Arr,0,Arr.length-1);
 });
 window.onload = function(){
     
