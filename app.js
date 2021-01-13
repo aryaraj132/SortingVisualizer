@@ -147,6 +147,7 @@ async function insertionSort(inputArr) {
             }
             inputArr[j+1] = current;
             bars[j+1].style.height = inputArr[j+1] + "%";
+            bars[j+1].style.background = "green";
             bars[i].style.background = "aqua";
         }
         for(let i=n-1;i>=0;i--){
