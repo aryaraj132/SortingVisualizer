@@ -15,12 +15,11 @@ Sort functions are implemented in JavaScript. Bars of differing heights are repr
 * Speed of the algorithm animation can be increased or decreased
 
 
-<detail>
+<details>
 <summary> <h2> Preview </h2></summary>
-</detail>
-## Preview :computer:
 
 <img src="./images/preview.jpg" />
 <img src="./images/preview1.jpg" />
 <img src="./images/preview2.jpg" />
 
+</details>
