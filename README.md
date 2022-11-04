@@ -14,9 +14,13 @@ Sort functions are implemented in JavaScript. Bars of differing heights are repr
 * Algorithms included: Bubble sort, Insertion sort, Selection sort, Quick sort, Merge sort.
 * Speed of the algorithm animation can be increased or decreased
 
+
+<detail>
+<summary> <h2> Preview </h2></summary>
+</detail>
 ## Preview :computer:
 
-<img src="./preview.jpg" />
-<img src="./preview1.jpg" />
-<img src="./preview2.jpg" />
+<img src="./images/preview.jpg" />
+<img src="./images/preview1.jpg" />
+<img src="./images/preview2.jpg" />
 
